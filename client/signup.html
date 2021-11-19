@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Birdie - Signup</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" async></script>
+</head>
+<body>
+    <section class="sign-up">
+        <h1>Little Birdie</h1>
+        <form id="sign-up-form">
+          <section id="errors"></section>
+          <fieldset>
+            <label for="">Name:</label><br>
+            <input type="text" name="name">
+          </fieldset>
+          <fieldset>
+            <label for="">Email:</label><br>
+            <input type="text" name="email">
+          </fieldset>
+          <fieldset>
+            <label for="">Password: </label><br>
+            <input type="password" name="password">
+          </fieldset>
+          <button>Sign up</button>
+          <p>Already have an account? <a href="/login.html">Log in here</a></p>
+        </form>
+    </section>
+    
+    <script>
+        const signUpForm = document.querySelector('#sign-up-form')
+        signUpForm.addEventListener('submit', event => {
+          event.preventDefault()
+          const data = Object.fromEntries(new FormData(signUpForm))
+          axios
+            .post('/api/users', data)
+            .then(() => {
+              location = '/login.html'
+            })
+        })
+    </script>
+</body>
+</html>

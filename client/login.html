@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Birdie - Login</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" async></script>
+</head>
+<body>
+    <section class="log-in">
+        <h1>Little Birdie</h1>
+        <form id="log-in-form">
+          <section id="errors"></section>
+          <fieldset>
+            <label for="">Email:</label><br>
+            <input type="text" name="email">
+          </fieldset>
+          <fieldset>
+            <label for="">Password: </label><br>
+            <input type="password" name="password">
+          </fieldset>
+          <button>Log in</button>
+          <p>No account? <a href="/signup.html">Sign up here</a></p>
+        </form>
+      </section>
+    
+      <script>
+        const logInForm = document.querySelector('#log-in-form')
+        logInForm.addEventListener('submit', event => {
+          event.preventDefault()
+          const data = Object.fromEntries(new FormData(logInForm))
+          axios
+            .post('/api/sessions', data)
+            .then(() => location = '/')
+            .catch(err => document.querySelector('#errors').innerHTML = err.response.data.message)
+        })
+      </script>
+</body>
+</html>
