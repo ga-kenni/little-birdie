@@ -6,6 +6,8 @@ const pgSession = require('connect-pg-simple')(expressSession);
 const errorHandler = require('./middleware/error_handler')
 const logger = require('./middleware/logger')
 
+const cors = require('cors')
+
 const entriesController = require('./controllers/entries')
 const usersController = require('./controllers/users')
 const sessionsController = require('./controllers/sessions');
@@ -15,6 +17,7 @@ const app = express()
 const port = process.env.PORT || 3000;
 
 app.use(logger)
+app.use(cors())
 
 app.use(expressSession({
     store: new pgSession({

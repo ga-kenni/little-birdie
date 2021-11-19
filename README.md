@@ -4,7 +4,7 @@ This is a public microblogging site where users can share their thoughts with th
 
 Note: It is intentionally built to be insecure. In particular, it is vulnerable to XSS and SQL injection attacks.
 
-Live site is here: 
+Live site is here: https://enigmatic-oasis-27992.herokuapp.com/
 
 ## Challenge 1 - XSS
 
