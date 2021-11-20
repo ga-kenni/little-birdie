@@ -10,8 +10,6 @@ Live site is here: https://enigmatic-oasis-27992.herokuapp.com/
 
 XSS or Cross-site scripting attacks are where malcious code (usually Javascript) can be injected into and otherwise trusted site.
 
-But there's a security flaw! It's possible to get a list of all the accounts on the site and their details!
-
 1. Find a way to insert some of your own JavaScript into the site, so that it runs for everyone when they use the app.
    - Hint: Consider how you could insert an `iframe` or a `script` tag into the DOM.
 2. Make it so that when someone loads the page, it `console.log`'s a message that you're the best hacker (use your name to claim credit)
@@ -37,9 +35,15 @@ yarn
 
 ```
 cat schema.sql | psql
-``
+```
 
-4. Run the server
+4.Create the environment variables in a file called `.env`
+
+```
+EXPRESS_SESSION_SECRET_KEY="something random here"
+```
+
+5. Run the server
 
 ```
 yarn start
